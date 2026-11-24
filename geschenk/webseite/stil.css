@@ -1,0 +1,411 @@
+/* Feierabend Relaunch Prototyp. Gemeinsames Stylesheet. Romeo und Eric, August 2026. */
+:root{
+  --rot:#c8322b;
+  --rot-dunkel:#a52822;
+  --rot-hell:#faeceb;
+  --tinte:#26221f;
+  --tinte-soft:#5d5751;
+  --papier:#fdfcfa;
+  --creme:#f6f3ef;
+  --linie:#e8e3dd;
+  --gruen:#2e6b46;
+  --gruen-hell:#e9f2ec;
+  --radius:18px;
+  --flaeche:#ffffff;
+  --glas:rgba(253,252,250,.92);
+  --text-sanft:#3a3a3c;
+  --dunkelflaeche:#26221f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Arial,sans-serif;
+  background:var(--papier);color:var(--tinte);
+  font-size:19px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+:focus-visible{outline:3px solid var(--rot);outline-offset:3px;border-radius:6px}
+
+@keyframes auf{from{transform:translateY(16px)}to{transform:none}}
+.auf{animation:auf .8s cubic-bezier(.16,1,.3,1) both}
+.a1{animation-delay:.06s}.a2{animation-delay:.14s}.a3{animation-delay:.22s}
+@media (prefers-reduced-motion: reduce){.auf{animation:none}*{transition:none!important}}
+
+.skip{position:absolute;left:-9999px;top:0;background:var(--tinte);color:#fff;padding:10px 18px;z-index:99;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+/* Kopf */
+header.kopfleiste{
+  position:sticky;top:0;z-index:50;background:var(--glas);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--linie);
+}
+.kopfleiste .wrap{max-width:1280px}
+.kopf{height:76px;display:flex;align-items:center;gap:26px}
+.kopf-aktionen .btn-hell{
+  background:none;border:none;padding:10px 6px;color:var(--tinte-soft);
+  font-weight:600;box-shadow:none;
+}
+.kopf-aktionen .btn-hell:hover{color:var(--tinte);transform:none;text-decoration:underline;text-underline-offset:4px}
+.logo{
+  font-size:1.4rem;font-weight:800;letter-spacing:-.02em;text-decoration:none;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:0;
+}
+.logo b{color:var(--rot);font-weight:800}
+.logo .atz{width:27px;height:27px;flex:none;margin:2px 1px 0}
+nav.haupt{display:flex;gap:16px;flex:1}
+nav.haupt a{
+  text-decoration:none;font-size:.95rem;font-weight:600;color:var(--tinte-soft);white-space:nowrap;
+  padding:6px 2px;border-bottom:3px solid transparent;transition:color .2s,border-color .2s;
+}
+nav.haupt a:hover{color:var(--tinte);border-color:var(--rot)}
+nav.haupt a[aria-current="page"]{color:var(--tinte);border-color:var(--rot)}
+.kopf-aktionen{display:flex;gap:12px;align-items:center}
+.suchknopf{
+  flex:none;width:40px;height:40px;border-radius:50%;background:var(--creme);
+  border:1px solid var(--linie);display:flex;align-items:center;justify-content:center;
+  color:var(--tinte-soft);transition:color .18s,border-color .18s,transform .18s;
+}
+.suchknopf svg{width:19px;height:19px}
+.suchknopf:hover{color:var(--tinte);border-color:var(--tinte-soft);transform:translateY(-1px)}
+
+.btn{
+  display:inline-block;text-decoration:none;font-weight:700;font-size:1.02rem;
+  border-radius:999px;padding:13px 26px;transition:transform .18s,box-shadow .18s,background .18s;
+  text-align:center;white-space:nowrap;border:none;cursor:pointer;font-family:inherit;
+}
+.btn:active{transform:scale(.98)}
+.btn-rot{background:var(--rot);color:#fff;box-shadow:0 6px 18px rgba(200,50,43,.25)}
+.btn-rot:hover{background:var(--rot-dunkel);transform:translateY(-1px)}
+.btn-hell{background:var(--flaeche);color:var(--tinte);border:2px solid var(--linie)}
+.btn-hell:hover{border-color:var(--tinte-soft);transform:translateY(-1px)}
+.btn-dunkel{background:var(--dunkelflaeche);color:#fff}
+.btn-dunkel:hover{background:#3a352f;transform:translateY(-1px)}
+
+/* Typo */
+h1{font-size:clamp(2.3rem,4.6vw,3.4rem);line-height:1.06;letter-spacing:-.03em;font-weight:800}
+h1 em{font-style:normal;color:var(--rot)}
+h2{font-size:clamp(1.9rem,3.4vw,2.6rem);letter-spacing:-.025em;line-height:1.12;font-weight:800}
+.einleitung{margin-top:14px;font-size:1.12rem;color:var(--tinte-soft);max-width:62ch}
+section.block{padding-top:88px;padding-bottom:88px}
+.kopfzeile{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+.mehr{font-weight:700;color:var(--rot);text-decoration:none;font-size:1.05rem;white-space:nowrap}
+.mehr:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* Unterseiten-Kopf */
+.seitenkopf{padding-top:56px;padding-bottom:44px}
+.brotkrumen{font-size:.92rem;color:var(--tinte-soft);margin-bottom:18px}
+.brotkrumen a{color:var(--tinte-soft);text-decoration:none}
+.brotkrumen a:hover{color:var(--rot);text-decoration:underline;text-underline-offset:3px}
+.brotkrumen span{margin:0 8px;color:var(--linie)}
+.seitenkopf p.intro{margin-top:16px;font-size:1.18rem;color:var(--tinte-soft);max-width:60ch}
+
+/* Suchkarte und Filter */
+.suchkarte{
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:22px;
+  box-shadow:0 24px 60px rgba(38,34,31,.1);padding:26px 28px;
+  display:grid;grid-template-columns:1.2fr .8fr auto;gap:16px;align-items:end;
+}
+.feld label{display:block;font-size:.92rem;font-weight:700;margin-bottom:8px}
+.feld input,.feld select{
+  width:100%;font-size:1.12rem;font-family:inherit;color:var(--tinte);
+  padding:14px 16px;border:2px solid var(--linie);border-radius:14px;background:var(--papier);
+}
+.feld input:focus,.feld select:focus{outline:none;border-color:var(--rot)}
+.suchkarte .btn{padding:16px 30px;font-size:1.08rem}
+
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{
+  font-size:.98rem;font-weight:600;color:var(--tinte-soft);background:var(--flaeche);
+  border:2px solid var(--linie);border-radius:999px;padding:9px 20px;text-decoration:none;
+  transition:border-color .18s,color .18s,background .18s;cursor:pointer;font-family:inherit;
+}
+.chip:hover{border-color:var(--tinte-soft);color:var(--tinte)}
+.chip.aktiv{background:var(--dunkelflaeche);border-color:var(--dunkelflaeche);color:#fff}
+
+/* Karten */
+.karte{background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--radius);padding:32px 34px}
+.karte h3{font-size:1.35rem;letter-spacing:-.015em}
+.karte p{margin-top:12px;color:var(--tinte-soft);font-size:1.02rem}
+
+.gruppen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gruppen.vierer{grid-template-columns:repeat(4,1fr)}
+.gruppe{
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--radius);overflow:hidden;
+  text-decoration:none;transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s;display:block;
+}
+.gruppe:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(38,34,31,.12)}
+.gruppe img{height:190px;width:100%;object-fit:cover}
+.gruppen.vierer .gruppe img{height:150px}
+.gruppe .inhalt{padding:20px 22px 22px}
+.gruppe h3{font-size:1.25rem;letter-spacing:-.01em}
+.gruppen.vierer .gruppe h3{font-size:1.1rem}
+.gruppe p{font-size:.98rem;color:var(--tinte-soft);margin-top:6px}
+.gruppe .termin{
+  margin-top:14px;padding-top:14px;border-top:1px solid var(--linie);
+  font-size:.95rem;color:var(--tinte);display:flex;gap:10px;align-items:baseline;
+}
+.gruppe .termin b{color:var(--rot);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Veranstaltungsliste */
+.ereignis{
+  display:grid;grid-template-columns:110px 1fr auto;gap:26px;align-items:center;
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--radius);
+  padding:22px 26px;text-decoration:none;
+  transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;
+}
+.ereignis + .ereignis{margin-top:14px}
+.ereignis:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(38,34,31,.1)}
+.ereignis .datum{
+  text-align:center;background:var(--creme);border-radius:14px;padding:12px 8px;
+  font-variant-numeric:tabular-nums;
+}
+.ereignis .datum b{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.ereignis .datum span{font-size:.85rem;color:var(--tinte-soft);text-transform:uppercase;letter-spacing:.04em}
+.ereignis h3{font-size:1.22rem;letter-spacing:-.01em}
+.ereignis .meta{margin-top:6px;font-size:.96rem;color:var(--tinte-soft)}
+.ereignis .art{
+  font-size:.85rem;font-weight:700;color:var(--gruen);background:var(--gruen-hell);
+  border-radius:999px;padding:6px 14px;white-space:nowrap;
+}
+.ereignis .art.voll{color:var(--tinte-soft);background:var(--creme)}
+
+/* Artikel und Lesetypografie */
+.lese{max-width:760px;margin:0 auto}
+.lese .rubrik{font-size:.95rem;font-weight:700;color:var(--rot)}
+.lese h1{margin-top:10px}
+.lese .stand{margin-top:16px;font-size:.95rem;color:var(--tinte-soft)}
+.lese figure.titelbild{margin:36px 0}
+.lese figure.titelbild img{border-radius:20px;width:100%;max-height:460px;object-fit:cover}
+.lese figure.titelbild figcaption{margin-top:10px;font-size:.88rem;color:var(--tinte-soft)}
+.lese .text p{margin-top:22px;font-size:1.13rem;line-height:1.75;max-width:66ch}
+.lese .text h2{font-size:1.6rem;margin-top:44px}
+.lese .text p:first-of-type{font-size:1.25rem;color:#3f3a35}
+.merkkasten{
+  margin-top:36px;background:var(--gruen-hell);border-radius:var(--radius);
+  padding:26px 30px;border:1px solid #d4e4d9;
+}
+.merkkasten h3{font-size:1.15rem;color:var(--gruen)}
+.merkkasten p{margin-top:10px;font-size:1.05rem}
+.bewertung{
+  margin-top:44px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+  border-top:1px solid var(--linie);padding-top:26px;font-size:1rem;color:var(--tinte-soft);
+}
+.sterne{color:var(--rot);letter-spacing:2px;font-size:1.2rem}
+
+/* Thementreff und Sponsor */
+.sponsor{
+  display:flex;gap:16px;align-items:center;background:var(--creme);
+  border:1px solid var(--linie);border-radius:var(--radius);padding:18px 24px;
+}
+.sponsor img{height:38px;width:auto;background:var(--flaeche);border-radius:10px;padding:6px 12px;border:1px solid var(--linie)}
+.sponsor p{font-size:.92rem;color:var(--tinte-soft);line-height:1.5}
+
+.experte{
+  display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:center;
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--radius);padding:22px 26px;
+}
+.experte img{width:96px;height:96px;border-radius:50%;object-fit:cover}
+.experte h3{font-size:1.15rem}
+.experte p{font-size:.95rem;color:var(--tinte-soft);margin-top:4px}
+
+.videobuehne{
+  position:relative;border-radius:22px;overflow:hidden;background:var(--tinte);
+  aspect-ratio:16/9;
+}
+.videobuehne img{width:100%;height:100%;object-fit:cover;opacity:.92}
+.play{
+  position:absolute;inset:0;margin:auto;width:92px;height:92px;border-radius:50%;
+  background:var(--glas);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 16px 44px rgba(0,0,0,.35);transition:transform .2s;
+}
+.videobuehne:hover .play{transform:scale(1.06)}
+.play::after{content:"";display:block;margin-left:7px;border-style:solid;border-width:15px 0 15px 25px;border-color:transparent transparent transparent var(--rot)}
+.videozeile{font-size:.95rem;color:var(--tinte-soft);margin-top:12px}
+
+/* TV Folgen */
+.folgen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.folge{
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--radius);overflow:hidden;
+  text-decoration:none;display:block;transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s;
+}
+.folge:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(38,34,31,.12)}
+.folge .thumb{position:relative;aspect-ratio:16/9;background:var(--creme)}
+.folge .thumb img{width:100%;height:100%;object-fit:cover}
+.folge .dauer{
+  position:absolute;right:10px;bottom:10px;background:rgba(38,34,31,.85);color:#fff;
+  font-size:.82rem;font-weight:600;border-radius:8px;padding:3px 9px;font-variant-numeric:tabular-nums;
+}
+.folge .inhalt{padding:18px 20px 20px}
+.folge h3{font-size:1.08rem;line-height:1.35}
+.folge p{font-size:.9rem;color:var(--tinte-soft);margin-top:6px}
+
+/* Formulare und Schritte */
+.schritte{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:schritt}
+.schritt{background:var(--flaeche);border:1px solid var(--linie);border-radius:var(--radius);padding:28px 30px}
+.schritt::before{
+  counter-increment:schritt;content:counter(schritt);
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;background:var(--rot-hell);color:var(--rot);
+  font-weight:800;font-size:1.15rem;margin-bottom:16px;
+}
+.schritt h3{font-size:1.18rem}
+.schritt p{margin-top:8px;font-size:.98rem;color:var(--tinte-soft)}
+
+form.anmeldung{background:var(--flaeche);border:1px solid var(--linie);border-radius:22px;padding:36px 38px;box-shadow:0 24px 60px rgba(38,34,31,.08)}
+form.anmeldung .feld + .feld{margin-top:22px}
+form.anmeldung .hilfe{font-size:.9rem;color:var(--tinte-soft);margin-top:8px}
+form.anmeldung .btn{margin-top:28px;width:100%;padding:17px;font-size:1.12rem}
+.beruhigung{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:.95rem;color:var(--tinte-soft)}
+.haken{color:var(--gruen);font-weight:800;flex:none}
+
+/* Farbflaechen */
+.flaeche-creme{background:var(--creme);border-top:1px solid var(--linie);border-bottom:1px solid var(--linie)}
+.buehne-dunkel{
+  background:var(--dunkelflaeche);color:#f4f1ed;border-radius:28px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;
+}
+.buehne-dunkel .text{padding:56px 58px}
+.buehne-dunkel h2{color:#fff}
+.buehne-dunkel p{margin-top:16px;color:#cfc8c0;font-size:1.08rem;max-width:48ch}
+.buehne-dunkel .hinweis{margin-top:22px;font-size:.92rem;color:#a89f95}
+.buehne-dunkel .text .btn{margin-top:28px}
+.buehne-dunkel .video{position:relative;height:100%;min-height:420px}
+.buehne-dunkel .video img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.buehne-dunkel:hover .play{transform:scale(1.06)}
+
+.schluss{padding-top:96px;padding-bottom:110px;text-align:center}
+.schluss h2{font-size:clamp(2.1rem,4vw,3rem)}
+.schluss p{margin:16px auto 0;max-width:52ch;color:var(--tinte-soft);font-size:1.15rem}
+.schluss .btn{margin-top:32px;padding:18px 40px;font-size:1.15rem}
+.schluss small{display:block;margin-top:16px;color:var(--tinte-soft);font-size:.95rem}
+
+/* Fuss */
+footer.fussleiste{background:var(--dunkelflaeche);color:#cfc8c0;padding:56px 0 40px}
+.fuss{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+.fuss .logo{color:#fff;font-size:1.3rem}
+.fuss p{font-size:.95rem;margin-top:12px;max-width:34ch}
+.fuss h4{color:#fff;font-size:.95rem;margin-bottom:12px}
+.fuss a{display:block;text-decoration:none;font-size:.95rem;padding:4px 0;color:#cfc8c0}
+.fuss a:hover{color:#fff}
+.fuss .server{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:.9rem}
+.fuss-unten{border-top:1px solid #3d3833;margin-top:44px;padding-top:22px;font-size:.85rem;color:#a89f95}
+
+/* Mittlere Fenster: Menue verdichten, damit sechs Punkte plus Knoepfe passen */
+@media (max-width:1220px){
+  nav.haupt{gap:10px}
+  nav.haupt a{font-size:.86rem}
+  .logo{font-size:1.15rem}
+  .logo .atz{width:22px;height:22px}
+  .kopf{gap:14px}
+  .kopf-aktionen{gap:6px}
+  .kopf-aktionen .btn{padding:10px 18px;font-size:.92rem}
+}
+@media (max-width:1080px){
+  .kopf-aktionen .btn-hell{display:none}
+  .kopf-aktionen .btn{padding:9px 14px;font-size:.9rem}
+  .logo .tld{display:none}
+  nav.haupt{gap:8px}
+  nav.haupt a{font-size:.84rem}
+  .suchknopf{width:34px;height:34px}
+  .suchknopf svg{width:16px;height:16px}
+}
+
+/* Mobil */
+@media (max-width:900px){
+  body{font-size:18px;overflow-x:hidden}
+  .kopf{gap:12px;justify-content:space-between}
+  .logo{font-size:1.2rem}
+  .kopf-aktionen .btn{padding:11px 18px;font-size:.95rem}
+  .kopf-aktionen .btn-hell{display:none}
+  nav.haupt{display:none}
+  section.block{padding-top:56px;padding-bottom:56px}
+  .seitenkopf{padding-top:36px;padding-bottom:28px}
+  .suchkarte{grid-template-columns:1fr}
+  .gruppen,.gruppen.vierer,.folgen,.schritte{grid-template-columns:1fr}
+  .buehne-dunkel{grid-template-columns:1fr}
+  .buehne-dunkel .text{padding:36px 30px}
+  .buehne-dunkel .video{min-height:300px}
+  .ereignis{grid-template-columns:84px 1fr;gap:16px}
+  .ereignis .art{display:none}
+  .experte{grid-template-columns:72px 1fr}
+  .experte img{width:72px;height:72px}
+  form.anmeldung{padding:28px 24px}
+  .fuss{grid-template-columns:1fr 1fr}
+}
+
+
+/* Untere Tab-Leiste, nur am Handy */
+.tabbar{display:none}
+@media (max-width:900px){
+  body{padding-bottom:86px}
+  .tabbar{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    position:fixed;left:0;right:0;bottom:0;z-index:70;
+    background:var(--glas);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid var(--linie);
+    padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+  }
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;color:var(--tinte-soft);font-size:.68rem;font-weight:600;padding:4px 0}
+  .tabbar a svg{width:24px;height:24px}
+  .tabbar a[aria-current="page"]{color:var(--rot)}
+}
+
+/* Abendmodus: folgt der Systemeinstellung */
+@media (prefers-color-scheme: dark){
+  :root{
+    --papier:#151c2c;
+    --creme:#1b2338;
+    --linie:#2c3852;
+    --tinte:#f0ede9;
+    --tinte-soft:#a9a49c;
+    --rot:#d1493b;
+    --rot-dunkel:#b73a2e;
+    --rot-hell:#3b2430;
+    --gruen:#8ecfa8;
+    --gruen-hell:#1e3329;
+    --flaeche:#1f2942;
+    --glas:rgba(21,28,44,.92);
+    --text-sanft:#cfc9c1;
+    --dunkelflaeche:#10151f;
+  }
+  .sponsor img{background:#fff}
+  .merkkasten{border-color:#2d4a3a}
+  .zitat{border-color:#4a3340}
+  .jubi{background:var(--flaeche)}
+  .telefonrahmen,.gruppen-kopf,.suchkarte,form.anmeldung{box-shadow:0 24px 60px rgba(0,0,0,.4)}
+}
+
+
+/* Schriftgroessen-Umschaltung */
+html[data-schrift="gross"]{font-size:112%}
+html[data-schrift="sehr-gross"]{font-size:126%}
+.schriftwahl{display:flex;gap:8px;align-items:center}
+.schriftwahl button{
+  font-family:inherit;font-weight:800;background:var(--flaeche);color:var(--tinte-soft);
+  border:2px solid var(--linie);border-radius:12px;cursor:pointer;
+  width:52px;height:46px;
+}
+.schriftwahl button:nth-child(1){font-size:.85rem}
+.schriftwahl button:nth-child(2){font-size:1.05rem}
+.schriftwahl button:nth-child(3){font-size:1.3rem}
+.schriftwahl button.aktiv{border-color:var(--rot);color:var(--rot)}
+
+/* Formular-Fehlerfuehrung */
+.feld.fehler input{border-color:#b3261e;background:var(--rot-hell)}
+.feld .fehlertext{display:none;font-size:.9rem;color:#b3261e;font-weight:600;margin-top:8px}
+.feld.fehler .fehlertext{display:block}
+.feld.fehler .hilfe{display:none}
+.erfolg{
+  background:var(--gruen-hell);border:1px solid #d4e4d9;border-radius:16px;
+  padding:22px 26px;color:var(--gruen);font-weight:600;
+}
+
+/* Kleinste Telefone (320 px): Kopfknopf weg, er steht in der Startfläche und der Tab-Leiste */
+@media (max-width:380px){.kopf-aktionen .btn{display:none}.zahlen{gap:10px}}
+@media (max-width:380px){h1,h2,h3{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}.buehne-dunkel>*,.fuss>*,.avatare{min-width:0}.avatare{flex-wrap:wrap}}
+@media (max-width:380px){main *{min-width:0}main{overflow-wrap:break-word}input,select,textarea,img{max-width:100%}}
+@media (max-width:380px){main .btn{white-space:normal;max-width:100%;text-align:center}}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="abendrot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d1493b"/>
+      <stop offset="1" stop-color="#9c231d"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="url(#abendrot)"/>
+  <circle cx="30" cy="30" r="2.2" fill="#fff"/>
+  <circle cx="48" cy="20" r="1.5" fill="#fff"/>
+  <circle cx="26" cy="52" r="1.5" fill="#fff"/>
+  <circle cx="94" cy="30" r="10" fill="#fff"/>
+  <circle cx="99" cy="25" r="10" fill="#a3271f"/>
+  <text x="60" y="86" text-anchor="middle" font-size="62" font-weight="800" fill="#fff" font-family="-apple-system,Arial,sans-serif">@</text>
+</svg>

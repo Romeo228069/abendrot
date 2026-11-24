@@ -1,0 +1,15 @@
+{
+  "name": "Feierabend",
+  "short_name": "Feierabend",
+  "description": "Das Netzwerk für Menschen ab 50. Gemeinsam statt einsam.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fdfcfa",
+  "theme_color": "#9c231d",
+  "lang": "de",
+  "icons": [
+    { "src": "symbol-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "symbol-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
