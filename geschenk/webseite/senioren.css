@@ -1,0 +1,207 @@
+/* Seniorenfassung, 24. November 2026.
+   Kommt nach stil.css und den Seitenstilen und legt drei Dinge fest:
+   Lesbarkeit (Mindestgroessen, Kontrast, keine Silbentrennung),
+   Bedienung (Tippziele ab 48 px, Schriftgroessen-Menue, Schritt-fuer-Schritt-Anmeldung),
+   Orientierung (zweizeiliger Kopf am Rechner, sanfte Seitenwechsel, Vorlesen, Telefon). */
+
+:root{
+  --tinte-soft:#4d4741;      /* 8,6:1 auf Papier */
+  --rot-text:#b02a23;        /* Rot als Schrift, 6,2:1 auf Papier */
+  --tipp:48px;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --tinte-soft:#c6c1b9;    /* 9,6:1 auf Nachtblau */
+    --rot:#c13a2e;           /* Flaechen mit weisser Schrift */
+    --rot-dunkel:#a8302a;
+    --rot-text:#ff9a8b;      /* Rot als Schrift auf Nachtblau */
+    --linie:#35415e;
+  }
+}
+
+[hidden]{display:none!important}
+body{font-size:1.1875rem}
+:focus-visible{outline:3px solid var(--rot-text);outline-offset:3px}
+
+/* Ueberschriften: nie trennen, ausgewogen umbrechen */
+h1,h2,h3{hyphens:manual;-webkit-hyphens:manual;overflow-wrap:break-word;text-wrap:balance}
+
+/* Hardcodierte Farbe, die im Abendmodus fast unsichtbar war */
+.lese .text p:first-of-type{color:var(--tinte)}
+
+/* ---------- Kopf ---------- */
+.kopf{height:80px}
+.kopf-aktionen{margin-left:auto;gap:10px}
+.kopf .suchknopf{
+  width:auto;height:var(--tipp);padding:0 20px 0 15px;gap:9px;border-radius:999px;
+  text-decoration:none;color:var(--tinte);font-weight:700;font-size:1rem;
+}
+.kopf .suchknopf svg{width:20px;height:20px}
+.kopf-aktionen .btn{min-height:var(--tipp);font-size:1rem}
+
+/* Schriftgroessen-Menue */
+.schriftmenue{position:relative}
+.schriftmenue summary{
+  list-style:none;display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  height:var(--tipp);padding:0 18px 0 14px;border-radius:999px;
+  background:var(--creme);border:1px solid var(--linie);
+  font-weight:700;font-size:1rem;color:var(--tinte);user-select:none;
+  transition:border-color .18s;
+}
+.schriftmenue summary::-webkit-details-marker{display:none}
+.schriftmenue summary:hover,.schriftmenue[open] summary{border-color:var(--rot-text)}
+.schriftmenue .aa{font-weight:800;font-size:1.3rem;line-height:1;letter-spacing:-.03em}
+.schriftmenue .aa small{font-size:.68em}
+.schrift-panel{
+  position:absolute;right:0;top:calc(100% + 10px);z-index:90;
+  background:var(--flaeche);border:1px solid var(--linie);border-radius:22px;
+  box-shadow:0 24px 60px rgba(20,16,12,.2);padding:16px;
+  width:max-content;max-width:calc(100vw - 32px);
+  transform-origin:top right;animation:panel-auf .22s cubic-bezier(.16,1,.3,1);
+}
+@keyframes panel-auf{from{transform:translateY(-6px) scale(.97)}to{transform:none}}
+.schrift-panel p{font-weight:700;font-size:1rem;margin:0 0 10px 4px}
+.segment{display:grid;grid-template-columns:repeat(3,minmax(76px,1fr));gap:4px;background:var(--creme);border-radius:16px;padding:4px}
+.segment button{
+  font-family:inherit;font-weight:800;line-height:1;border:0;border-radius:12px;background:none;color:var(--tinte);
+  min-height:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;
+  transition:background .18s,box-shadow .18s,color .18s;
+}
+.segment button:nth-child(1){font-size:1.05rem}
+.segment button:nth-child(2){font-size:1.4rem}
+.segment button:nth-child(3){font-size:1.8rem}
+.segment button span{font-size:1rem;font-weight:600;color:var(--tinte-soft)}
+.segment button.aktiv{background:var(--flaeche);color:var(--rot-text);box-shadow:0 2px 10px rgba(20,16,12,.14)}
+.segment button.aktiv span{color:var(--tinte)}
+
+/* Hauptmenue am Rechner: eigene Zeile, grosse Schrift */
+.menuezeile{border-top:1px solid var(--linie)}
+.menuezeile nav.haupt{display:flex;gap:4px;margin-left:-14px;overflow-x:auto;scrollbar-width:none}
+.menuezeile nav.haupt::-webkit-scrollbar{display:none}
+.menuezeile nav.haupt a{
+  display:inline-flex;align-items:center;min-height:54px;padding:0 14px;
+  font-size:1.0625rem;font-weight:650;color:var(--tinte-soft);white-space:nowrap;
+  border-bottom:3px solid transparent;
+}
+.menuezeile nav.haupt a:hover{color:var(--tinte);border-color:var(--linie)}
+.menuezeile nav.haupt a[aria-current="page"]{color:var(--tinte);border-color:var(--rot)}
+
+@media (max-width:1080px){
+  .kopf .suchknopf{width:auto;height:var(--tipp)}
+  .kopf .suchknopf svg{width:20px;height:20px}
+  .kopf-aktionen .btn{padding:0 18px;font-size:1rem}
+}
+
+/* ---------- Links und Tippziele ---------- */
+.mehr{
+  display:inline-flex;align-items:center;gap:.55em;min-height:var(--tipp);
+  padding:.5em 1.25em;border:2px solid var(--linie);border-radius:999px;background:var(--flaeche);
+  color:var(--rot-text);font-size:1.05rem;white-space:normal;text-decoration:none;
+  transition:border-color .18s,transform .18s;
+}
+.mehr::after{content:"→";font-weight:800;transition:transform .2s}
+.mehr:hover{text-decoration:none;border-color:var(--rot-text)}
+.mehr:hover::after{transform:translateX(3px)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--tipp)}
+.chip{display:inline-flex;align-items:center;min-height:var(--tipp);padding:0 20px;font-size:1rem}
+
+.brotkrumen{display:flex;flex-wrap:wrap;align-items:center;font-size:1rem}
+.brotkrumen a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-decoration-color:var(--linie);text-decoration-thickness:2px;text-underline-offset:5px}
+.brotkrumen span{color:var(--tinte-soft)}
+
+main p a:not(.btn):not(.mehr):not(.chip){color:var(--rot-text);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;padding-block:8px}
+
+.feld input,.feld select{min-height:56px;font-size:1.15rem}
+.feld label{font-size:1rem}
+
+/* Termine: Datum nie zusammendruecken */
+.gruppe .termin b{flex:none}
+
+/* Fuss */
+.fuss p,.fuss h4{font-size:1rem}
+.fuss h4{font-size:1.05rem}
+.fuss a{font-size:1rem;padding:10px 0;color:#ddd6cd}
+.fuss-unten{font-size:1rem;color:#bdb4a9}
+
+/* ---------- Lieber anrufen ---------- */
+.anruf{display:flex;gap:14px;align-items:center;background:var(--creme);border:1px solid var(--linie);border-radius:var(--radius);padding:18px 20px}
+.anruf .hoerer{flex:none;width:48px;height:48px;border-radius:50%;background:var(--gruen-hell);color:var(--gruen);display:flex;align-items:center;justify-content:center}
+.anruf .hoerer svg{width:24px;height:24px}
+.anruf b{display:block;font-size:1.05rem}
+.anruf small{display:block;font-size:1rem;color:var(--tinte-soft)}
+.anruf a{display:inline-flex;align-items:center;min-height:44px;font-size:1.35rem;font-weight:800;color:var(--tinte);text-decoration:none;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fuss .anruf{background:#322d29;border-color:#46403a;margin-bottom:14px;padding:14px 16px}
+.fuss .anruf b{color:#fff}
+.fuss .anruf a{display:inline-flex;padding:0;color:#fff;font-size:1.2rem}
+.fuss .anruf .hoerer{background:#2a3d31;color:#9fd8b4}
+
+/* ---------- Vorlesen ---------- */
+.vorlesen svg{width:22px;height:22px;flex:none}
+.vorlesen[aria-pressed="true"]{border-color:var(--rot-text);color:var(--rot-text)}
+.wird-gelesen{background:var(--rot-hell);box-shadow:0 0 0 10px var(--rot-hell);border-radius:6px;transition:background .3s,box-shadow .3s}
+
+/* ---------- Anmeldung in drei Schritten ---------- */
+.fortschritt{margin-bottom:24px}
+.fortschritt p{font-weight:700;font-size:1rem;color:var(--tinte-soft)}
+.fortschritt .balken{margin-top:10px;height:10px;border-radius:99px;background:var(--creme);overflow:hidden}
+.fortschritt .balken i{display:block;height:100%;width:33.4%;background:var(--rot);border-radius:inherit;transition:width .4s cubic-bezier(.16,1,.3,1)}
+.stufe{border:0;padding:0;margin:0;min-width:0}
+.stufe-titel{display:block;font-size:1.45rem;font-weight:800;letter-spacing:-.015em;line-height:1.2;margin-bottom:18px;padding:0}
+form.mehrstufig .stufe{animation:stufe-rein .35s cubic-bezier(.16,1,.3,1)}
+@keyframes stufe-rein{from{transform:translateX(16px)}to{transform:none}}
+form.anmeldung .feld label{font-size:1.1rem}
+form.anmeldung .hilfe,form.anmeldung .fehlertext,.feld .fehlertext{font-size:1rem}
+.stufe-knoepfe{display:flex;gap:12px;margin-top:28px}
+form.anmeldung .stufe-knoepfe .btn{margin-top:0;min-height:58px;font-size:1.12rem}
+form.anmeldung .stufe-knoepfe .btn-rot{flex:1}
+form.anmeldung .stufe-knoepfe .btn-hell{flex:none;width:auto;padding:0 22px}
+.beruhigung{font-size:1rem}
+form.anmeldung + div .anruf{margin-bottom:0}
+
+/* ---------- Sanfte Seitenwechsel ---------- */
+@view-transition{navigation:auto}
+header.kopfleiste{view-transition-name:kopf}
+.tabbar{view-transition-name:tabbar}
+::view-transition-old(root){animation:vt-raus .2s ease both}
+::view-transition-new(root){animation:vt-rein .34s cubic-bezier(.16,1,.3,1) both}
+@keyframes vt-raus{to{opacity:0}}
+@keyframes vt-rein{from{opacity:0;transform:translateY(10px)}}
+@media (prefers-reduced-motion: reduce){
+  @view-transition{navigation:none}
+  .schrift-panel,form.mehrstufig .stufe{animation:none}
+}
+
+/* ---------- Handy ---------- */
+@media (max-width:900px){
+  body{font-size:1.125rem;padding-bottom:100px}
+  .menuezeile{display:none}
+  .kopf{height:70px}
+  .kopf .suchknopf{display:none}            /* Suche steht unten in der Leiste */
+  .schriftmenue summary{width:var(--tipp);padding:0;justify-content:center}
+  .schriftmenue .wort{display:none}
+  .kopf-aktionen .btn-rot{padding:0 18px}
+  .tabbar a{font-size:.8125rem;font-weight:700;gap:4px;min-height:58px;justify-content:center}
+  .tabbar a svg{width:26px;height:26px}
+  .tabbar a[aria-current="page"]{color:var(--rot-text)}
+  .ereignis{grid-template-columns:92px 1fr}
+}
+@media (max-width:440px){
+  .kopf-aktionen .btn-rot{display:none}
+  .stufe-knoepfe{flex-wrap:wrap}
+}
+@media (max-width:380px){
+  h1{font-size:clamp(1.85rem,9vw,2.3rem)}
+  .held h1{font-size:clamp(2.1rem,10.5vw,2.6rem)}
+}
+/* Bei grosser Schrift bleibt die untere Leiste lesbar und passt trotzdem */
+html[data-schrift="gross"] .tabbar a,html[data-schrift="sehr-gross"] .tabbar a{font-size:clamp(12px,3.5vw,14.5px)}
+
+/* Nachmessung: letzte kleine Tippziele */
+.logo{min-height:var(--tipp)}
+.schluss small a,main small a{display:inline-flex;align-items:center;min-height:44px}
+.grossfeld input{min-height:52px;font-size:1.15rem}
+.gruppe .termin{flex-wrap:wrap;row-gap:2px}
+.skip{background:var(--dunkelflaeche);color:#fff}
+@media (max-width:440px){.fuss{grid-template-columns:1fr}}
+main *,footer *{overflow-wrap:break-word}
